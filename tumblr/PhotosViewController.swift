@@ -27,6 +27,10 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
         // Do any additional setup after loading the view.
         
         fetchData()
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
+        tableView.insertSubview(refreshControl, at: 0)
 
         tableView.dataSource = self
         tableView.delegate = self
@@ -67,6 +71,15 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
+    }
+    
+    @objc func refreshControlAction (_ refreshControl: UIRefreshControl) {
+        
+        fetchData()
+        
+        self.tableView.reloadData()
+        refreshControl.endRefreshing()
+        
     }
     
     
