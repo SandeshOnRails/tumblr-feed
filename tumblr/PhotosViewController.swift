@@ -134,9 +134,6 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
                 
                 let urlPath = original["url"] as! String
                 
-                let url = URL(string: urlPath)
-                
-                
                 let detailViewController = segue.destination as! PhotosDetailViewController
                 
                 detailViewController.imageUrl = urlPath
