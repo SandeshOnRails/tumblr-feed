@@ -27,7 +27,7 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
         // Do any additional setup after loading the view.
         
         fetchData()
-        
+        self.navigationController?.navigationBar.isHidden = false
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
         tableView.insertSubview(refreshControl, at: 0)
@@ -116,6 +116,42 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
         
         
         task.resume()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let cell = sender as! UITableViewCell
+        
+        if let indexPath = tableView.indexPath(for: cell) {
+        
+            let post = self.posts[(indexPath.row)]
+            
+            if let photos = post["photos"] as? [[String: Any]] {
+                
+                let photo = photos[0]
+                
+                let original = photo["original_size"] as! [String: Any]
+                
+                let urlPath = original["url"] as! String
+                
+                let url = URL(string: urlPath)
+                
+                
+                let detailViewController = segue.destination as! PhotosDetailViewController
+                
+                detailViewController.imageUrl = urlPath
+                
+                
+                
+            }
+            
+            
+            
+        }
+        
+        
+        
+        
     }
     
     override func didReceiveMemoryWarning() {

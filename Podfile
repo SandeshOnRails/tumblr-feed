@@ -7,6 +7,6 @@ target 'tumblr' do
 
   # Pods for tumblr
 
-pod 'AlamofireImage'
+pod 'AlamofireImage' , '~> 3.0' 
 
 end
