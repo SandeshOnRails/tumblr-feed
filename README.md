@@ -1,6 +1,6 @@
 # Lab 2 - *tumblr*
 
-**tumblr** is a photo browsing app app using the [The Tumblr API](https://www.tumblr.com/docs/en/api/v2#posts).
+**tumblr** is a photo browsing app app using the [The Tumblr API]
 
 Time spent: **2** hours spent in total
 
